@@ -1,0 +1,109 @@
+/* Container for Login & Register Sections */
+section[aria-label="Login Section"],
+section[aria-label="Register Section"] {
+  max-width: 400px;
+  margin: 40px auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  font-family: Arial, sans-serif;
+  background-color: #fafafa;
+}
+
+/* Form Styling */
+form[aria-label="Login Form"],
+form[aria-label="Register Form"] {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Input fields */
+form input[type="email"],
+form input[type="password"] {
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+}
+
+/* Labels */
+form label {
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+/* Submit buttons */
+form button[type="submit"] {
+  padding: 10px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background 0.2s ease;
+}
+
+form button[type="submit"]:hover {
+  background-color: #43a047;
+}
+
+form button[type="submit"]:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+/* Error / Message */
+p.error,
+p.message {
+  margin-top: 12px;
+  font-size: 14px;
+}
+
+p.error {
+  color: red;
+}
+
+p.message {
+  color: blue;
+}
+
+/* Footer links */
+footer {
+  margin-top: 12px;
+}
+
+footer button {
+  background: none;
+  border: none;
+  color: #007bff;
+  cursor: pointer;
+  font-size: 14px;
+  padding: 0;
+}
+
+footer button:hover {
+  color: #0056b3;
+}
+
+/* Optional: Form-group wrapper */
+.form-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.form-group label {
+  width: 100px; /* fixed label width */
+  font-weight: 600;
+  text-align: left;
+}
+
+.form-group input {
+  flex: 1;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}

@@ -1,0 +1,14 @@
+.infiniteScrollContainer {
+  height: 400px;
+  width: 300px;
+  overflow: scroll;
+  background: coral;
+}
+.listItem {
+  border-top: 1px solid rgb(52, 51, 51);
+}
+.loader {
+  color: rgb(101, 101, 111);
+  font-weight: 600;
+  padding: 8px;
+}

@@ -1,0 +1,36 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+.wrapper {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.items_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  height: 97%;
+}
+
+.pages_container {
+  height: 3%;
+  display: flex;
+  gap: 5px;
+  padding: 12px;
+}
+
+.pageNo {
+  padding: 4px;
+  border: 1px solid slategrey;
+  text-align: center;
+  margin: auto;
+  cursor: pointer;
+}

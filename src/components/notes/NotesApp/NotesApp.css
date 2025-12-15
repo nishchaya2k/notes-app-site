@@ -1,0 +1,108 @@
+/* Main Container */
+.notes-container {
+  padding: 20px;
+  max-width: 700px;
+  margin: auto;
+  font-family: Arial, sans-serif;
+}
+
+/* Heading */
+.notes-title {
+  font-size: 32px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+/* Notes List */
+.notes-list {
+  margin-top: 20px;
+}
+
+.note-card {
+  padding: 15px;
+  border: 1px solid #dcdcdc;
+  border-radius: 8px;
+  margin-bottom: 12px;
+  background: #fafafa;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.note-actions {
+  margin-top: auto; /* pushes icons to bottom */
+  display: flex;
+  justify-content: flex-end; /* right align */
+  gap: 10px;
+  padding-top: 10px;
+}
+
+.action-icon {
+  cursor: pointer;
+  height: 16px !important;
+  width: 16px !important;
+  color: #555;
+  transition: 0.2s ease;
+}
+
+.action-icon:hover {
+  color: #000;
+}
+
+.delete-icon:hover {
+  color: red;
+}
+
+.note-title {
+  margin: 0 0 6px 0;
+}
+
+.note-description {
+  margin: 0;
+  color: #555;
+}
+
+/* Add Note Section */
+.note-form-container {
+  margin-top: 30px;
+}
+
+.note-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.form-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.form-group label {
+  width: 100px; /* fixed label width */
+  font-weight: 600;
+  text-align: left;
+}
+
+.form-group input {
+  flex: 1;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+.submit-btn {
+  padding: 10px 14px;
+  background: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.submit-btn:hover {
+  background: #43a047;
+}
