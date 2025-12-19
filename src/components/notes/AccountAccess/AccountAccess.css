@@ -16,6 +16,7 @@ form[aria-label="Register Form"] {
   display: flex;
   flex-direction: column;
   gap: 12px;
+  margin-top: 12px;
 }
 
 /* Input fields */
@@ -106,4 +107,18 @@ footer button:hover {
   padding: 8px;
   border: 1px solid #ccc;
   border-radius: 6px;
+}
+.google-login-btn {
+  background-color: #4285f4;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 4px;
+  font-size: 16px;
+  margin-top: 1rem;
+}
+
+.google-login-btn:hover {
+  background-color: #357ae8;
 }

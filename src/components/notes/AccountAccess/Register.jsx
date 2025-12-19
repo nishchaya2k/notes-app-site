@@ -27,6 +27,8 @@ export default function Register({ onSwitch }) {
         setForm({ email: "", password: "" });
     };
 
+
+
     return (
         <section aria-label="Register Section">
             <h2>Create Account</h2>
@@ -50,7 +52,7 @@ export default function Register({ onSwitch }) {
                 <button type="submit">Register</button>
                 {message && <p className="message">{message}</p>}
             </form>
-
+        
             {onSwitch && (
                 <footer>
                     <p>

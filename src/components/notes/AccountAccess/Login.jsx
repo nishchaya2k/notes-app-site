@@ -25,6 +25,19 @@ export default function Login({ onSwitch }) {
         setLoading(false);
     };
 
+
+    const handleGoogleLogin = async () => {
+        const { error } = await supabase.auth.signInWithOAuth({
+            provider: 'google',
+            options: {
+                redirectTo: 'window.location.origin,'
+            }
+        })
+        if (error) {
+            console.error("Google login error:", error.message);
+        }
+    }
+
     return (
         <section aria-label="Login Section">
             <h2>Login</h2>
@@ -57,6 +70,9 @@ export default function Login({ onSwitch }) {
 
                 {error && <p className="error">{error}</p>}
             </form>
+
+            <button onClick={handleGoogleLogin} className="google-login-btn">  Login with Google</button>
+
 
             <footer>
                 <p>
