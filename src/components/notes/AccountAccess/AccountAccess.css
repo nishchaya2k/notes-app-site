@@ -1,6 +1,7 @@
 /* Container for Login & Register Sections */
 section[aria-label="Login Section"],
-section[aria-label="Register Section"] {
+section[aria-label="Register Section"],
+section[aria-label="Phone Login"] {
   max-width: 400px;
   margin: 40px auto;
   padding: 20px;
@@ -12,7 +13,8 @@ section[aria-label="Register Section"] {
 
 /* Form Styling */
 form[aria-label="Login Form"],
-form[aria-label="Register Form"] {
+form[aria-label="Register Form"],
+section[aria-label="Phone Login"] {
   display: flex;
   flex-direction: column;
   gap: 12px;
@@ -21,7 +23,9 @@ form[aria-label="Register Form"] {
 
 /* Input fields */
 form input[type="email"],
-form input[type="password"] {
+form input[type="password"],
+section input[type="tel"],
+section input[type="text"] {
   padding: 10px;
   border-radius: 6px;
   border: 1px solid #ccc;
@@ -53,6 +57,49 @@ form button[type="submit"]:hover {
 form button[type="submit"]:disabled {
   opacity: 0.7;
   cursor: not-allowed;
+}
+
+/* Reuse Login/Register submit button styling */
+section[aria-label="Phone Login"] > button {
+  padding: 10px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+  width: 100%;
+  margin-top: 10px;
+  transition: background 0.2s ease;
+}
+
+section[aria-label="Phone Login"] > button:hover {
+  background-color: #43a047;
+}
+
+section[aria-label="Phone Login"] > button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+/* messages reuse */
+section[aria-label="Phone Login"] p {
+  margin-top: 10px;
+  text-align: center;
+  font-size: 14px;
+}
+
+/* back button reusing footer link style */
+section[aria-label="Phone Login"] button[type="button"] {
+  background: none;
+  border: none;
+  color: #007bff;
+  cursor: pointer;
+  margin-top: 12px;
+}
+
+section[aria-label="Phone Login"] button[type="button"]:hover {
+  color: #0056b3;
 }
 
 /* Error / Message */
@@ -108,7 +155,8 @@ footer button:hover {
   border: 1px solid #ccc;
   border-radius: 6px;
 }
-.google-login-btn {
+.google-login-btn,
+.phone-login-btn {
   background-color: #4285f4;
   color: white;
   border: none;
@@ -121,4 +169,13 @@ footer button:hover {
 
 .google-login-btn:hover {
   background-color: #357ae8;
+}
+
+.phone-login-btn {
+  margin-left: 12px;
+  background-color: #06ba7e;
+}
+
+.phone-login-btn:hover {
+  background-color: #0ba874;
 }

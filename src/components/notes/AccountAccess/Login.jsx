@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 import { supabase } from "../../../supabaseClient";
 import "./AccountAccess.css";
+import PhoneLogin from "./PhoneLogin";
 
 export default function Login({ onSwitch }) {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
+    const [showPhoneLogin, setShowPhoneLogin] = useState(false);
 
     const handleLogin = async (e) => {
         e.preventDefault();
@@ -36,6 +38,10 @@ export default function Login({ onSwitch }) {
         if (error) {
             console.error("Google login error:", error.message);
         }
+    }
+
+    if (showPhoneLogin) {
+        return <PhoneLogin onSwitch={() => setShowPhoneLogin(false)} />;
     }
 
     return (
@@ -73,6 +79,7 @@ export default function Login({ onSwitch }) {
 
             <button onClick={handleGoogleLogin} className="google-login-btn">  Login with Google</button>
 
+            <button onClick={() => setShowPhoneLogin(true)} className="phone-login-btn">Login with Phone</button>
 
             <footer>
                 <p>
