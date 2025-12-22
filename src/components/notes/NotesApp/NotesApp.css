@@ -106,3 +106,23 @@
 .submit-btn:hover {
   background: #43a047;
 }
+.notes-info {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: #f0f4ff;
+  padding: 8px 12px;
+  margin: 10px;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+.info-icon {
+  color: #1a73e8;
+  cursor: pointer;
+}
+
+.info-text {
+  color: #333;
+}

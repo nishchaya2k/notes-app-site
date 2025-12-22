@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react";
 import { supabase } from "../../../supabaseClient";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
+import { FaInfoCircle } from "react-icons/fa";
 import "./NotesApp.css";
-
 // const {
 //   data: { session },
 // } = await supabase.auth.getSession();
@@ -110,7 +110,12 @@ const NotesApp = ({ user }) => {
   return (
     <main className="notes-container">
       <header>
-        <h1 className="notes-title">Notes</h1>
+        <h1 className="notes-title">Notes</h1>        <div className="notes-info">
+          <FaInfoCircle className="info-icon" title="Free plan allows 2 notes. Upgrade to premium for unlimited notes." />
+          <span className="info-text">Free users can save up to 2 notes. Premium unlocks unlimited notes.</span>
+        </div>
+
+
       </header>
 
       {/* Notes List */}
