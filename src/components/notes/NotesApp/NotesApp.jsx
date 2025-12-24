@@ -33,7 +33,7 @@ const NotesApp = ({ user }) => {
       .from("profiles")
       .select("is_paid, free_notes_limit")
       .eq("id", user.id)
-      .single();
+      .maybeSingle();
 
     setIsPaid(profile?.is_paid);
   };
@@ -44,13 +44,11 @@ const NotesApp = ({ user }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const { error } = await supabase.from("notes").insert([
-      {
-        title: notes.title,
-        description: notes.description,
-        user_id: user.id,
-      },
-    ]);
+    const { error } = await supabase.rpc("create_note", {
+      title: notes.title,
+      description: notes.description,
+    });
+
 
     if (error) {
       console.error("Insert error:", error);
@@ -105,6 +103,56 @@ const NotesApp = ({ user }) => {
       return;
     }
     fetchAllNotes();
+  };
+
+  const upgradeToPremium = async () => {
+    const session = await supabase.auth.getSession();
+
+    const orderRes = await fetch(
+      "https://vbenugpxjcxxhaxicxap.functions.supabase.co/create-razorpay-order", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${session.data.session.access_token}`,
+      },
+    }
+    );
+
+    const order = await orderRes.json();
+
+    const options = {
+      key: "rzp_live_Rv7jrlvrTl9eCK", // KEY_ID only
+      amount: order.amount,
+      currency: "INR",
+      name: "Notes App",
+      description: "Premium Upgrade",
+      order_id: order.id,
+      handler: async (response) => {
+        const session = await supabase.auth.getSession();
+
+        await fetch(
+          "https://vbenugpxjcxxhaxicxap.functions.supabase.co/verify-razorpay-payment",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${session.data.session.access_token}`,
+            },
+            body: JSON.stringify({
+              razorpay_payment_id: response.razorpay_payment_id,
+              razorpay_order_id: response.razorpay_order_id,
+              razorpay_signature: response.razorpay_signature,
+            }),
+          }
+        );
+
+        alert("Payment successful. Premium unlocked!");
+        window.location.reload();
+      }
+    };
+
+    const rzp = new window.Razorpay(options);
+    rzp.open();
   };
 
   return (
@@ -167,9 +215,26 @@ const NotesApp = ({ user }) => {
             />
           </div>
 
-          <button type="submit" className="submit-btn" disabled={!isPaid && notesCount >= 2}>
-            {editingNote ? "Edit Note" : isPaid ? "Add Note" : notesCount >= 2 ? "Upgrade to Add More Notes" : "Add Note"}
+
+
+          <button
+            type={(!isPaid && notesCount >= 2) ? "button" : "submit"}
+            className="submit-btn"
+            onClick={
+              (!isPaid && notesCount >= 2)
+                ? upgradeToPremium
+                : undefined
+            }
+          >
+            {editingNote
+              ? "Edit Note"
+              : isPaid
+                ? "Add Note"
+                : notesCount >= 2
+                  ? "Upgrade to Add More Notes"
+                  : "Add Note"}
           </button>
+
         </form>
       </footer>
     </main>
